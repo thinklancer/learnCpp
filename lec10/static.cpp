@@ -21,3 +21,47 @@ void sub2(bool flag){ //(2) Fibonacci
   }
   cout << prev[0] <<endl;
 }
+
+/* (3) int container */
+int container::num = 0;// no need for static any more
+
+void container::printstatic(){ // no need for static any more
+  cout << num <<endl;
+}
+
+void sub3(){
+  container::printstatic();
+  container a(4),b(5);
+  a.printstatic();
+  b.print();
+}
+
+/* (4) monitor */
+void sub4(){
+  static Monitor mm;
+  mm.incident();
+  mm.print();
+}
+
+int Monitor::number_incident = 0;
+
+void sub5(){
+  Monitor s;
+  static Cmonitor a(&s);
+}
+
+void sub10(){ // won't clash with the static value in main.cpp
+  q10 = 2;
+  cout << q10 << endl;
+}
+
+container a(2);
+
+
+void name1::print1(){
+  cout << 1 <<endl;
+}
+
+void name1::print2(){
+  cout << 2 <<endl;
+}

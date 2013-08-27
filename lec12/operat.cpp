@@ -1,4 +1,5 @@
 #include "operat.h"
+using namespace std;
 
 // (1) operate as member function
 const Integer& Integer::operator ++ (){
@@ -23,13 +24,14 @@ const Integer Integer::operator -- (int){
   return before;
 }
 
-void Integer::print(std::ostream & co){
-  co << data << std::endl;
+void Integer::print(ostream & co){
+  co << data << endl;
 }
 
-const Integer Integer::operator +(const Integer &a) const{
+/* const Integer Integer::operator +(const Integer &a) const{
   return Integer(data+a.data);
 }
+*/
 
 const Integer Integer::operator -(const Integer &a) const{
   return Integer(data-a.data);
@@ -37,6 +39,10 @@ const Integer Integer::operator -(const Integer &a) const{
 
 const Integer Integer::operator +() const{
   return *this;
+}
+
+ostream& operator << (ostream &co, const Integer& a){ // (6)
+  co << "output:" << a.data << endl;
 }
 
 void sub1(){
@@ -52,5 +58,21 @@ void sub1(){
 
   /* (4)-(5) */
   a = b++ + c--; // 2+1
-  a.print(std::cout);
+  a.print(cout);
+
+  cout << a; // (6)
+
+  cout << a+4 ; // (29) reflexivity
+}
+
+/* (11) */
+void sub11(){
+  Number a(10),b(3);
+  Number c ; // = a/b; // copy-constructor will be called automatically
+  (a/b).print();
+  c = a/b;
+  c.print();
+
+  cout << int(c) <<endl;
+ 
 }

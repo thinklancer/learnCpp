@@ -1,6 +1,6 @@
 #include "inherit.hpp"
 
 int main(){
-  sub3();
+  sub26();
   return 0;
 }
